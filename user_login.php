@@ -25,6 +25,13 @@
 </style>
 </head>
 <body style="background-color: cyan;">
+  <nav class="navbar navbar bg-light">
+  <a class="navbar-brand primary"><b>ITM UNIVERSITY</b></a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx-Eg8XhZ5wVnqLP_RBBsa-n_yjn0YeEhWRg&usqp=CAU"  style="width:600px;">
   <div class="container">
     <div class="login-form">

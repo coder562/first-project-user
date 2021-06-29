@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include "session.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,31 +17,61 @@ session_start();
 </style>
 </head>
 <body style="background-color: cyan;">
+  <nav class="navbar navbar bg-light">
+  <a class="navbar-brand primary"><b>ITM UNIVERSITY</b></a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success mx-2" type="submit">Search</button>
+    <h3><?php echo $_SESSION['vaishali'] ?></h3>
+    <a href="logout.php" class="btn btn-danger mx-2">Logout</a>
+  </form>
+</nav>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx-Eg8XhZ5wVnqLP_RBBsa-n_yjn0YeEhWRg&usqp=CAU"  style="width:600px;">
   <br>
   <h1 class="text-center bg-primary" style="color: #fff;">Welcome to ITM</h1>
   <!-- <p class="text-center">Think Big Think Beyond!</p> -->
   
-<h1><?php echo $_SESSION['vaishali'] ?></h1>
+
+
   <div class="container">
     <div class="row">
       <div class="col-md-4">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://cache.careers360.mobi/media/presets/860X430/article_images/2020/3/2/B.Tech_aGtlUrD.webp" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">B.TECH</h5>
-          <p class="card-text">B. Tech or Bachelor of Technology is an undergraduate degree programme in the engineering field. It is offered in various disciplines like computer science and engineering, civil engineering, mechanical engineering, electrical engineering, electronics engineering etc.</p>
-          <a href="btech.php" class="btn btn-primary">Apply now</a>
+          <h5 class="card-title text-center"><b>B.TECH</b></h5>
+          <p class="card-text">B. Tech or Bachelor of Technology is an undergraduate degree programme in the engineering field. </p>
+          <?php
+          include "db_conn.php";
+          $e=$_SESSION['vaishali'];
+          $data="select * from btech where email='$e'";
+          $result=mysqli_query($conn,$data);
+          $a=mysqli_fetch_array($result);
+          // echo "<pre>";
+          // print_r($result);
+          if(mysqli_num_rows($result)==1){
+            
+            echo '<a href="btech.php" class="btn btn-primary disabled">Apply now</a>';
+            echo '<a href="btech_display.php" class="btn btn-success mx-2">Display</a>';
+          }
+          else{
+            echo '<a href="btech.php" class="btn btn-primary">Apply now</a>';
+          }
+
+          ?>
+          <!-- <a href="btech.php" class="btn btn-primary">Apply now</a> -->
         </div>
       </div>
     </div>
 
+
       <div class="col-md-4">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://www.successcds.net/full-form/wp-content/uploads/2018/12/MCA-300x300.jpg" alt="Card image cap">
+        <img class="card-img-top" src="https://blog.mmumullana.org/wp-content/uploads/2018/07/Blog-Creative-MCA.jpg" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">MCA</h5>
+          <h5 class="card-title text-center"><b>MCA</b></h5>
           <p class="card-text">“MCA (Master of Computer Applications) is a professional master's degree </p>
+          
           <a href="#" class="btn btn-primary">Apply now</a>
         </div>
       </div>
@@ -49,15 +79,16 @@ session_start();
 
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgWX2XEnl4RrD79E8qZmfEZNq6wY_9m9fK12qngfPo2yCCUx8RmjZXtEdbBou7aSivTUM&usqp=CAU" alt="Card image cap">
+        <img class="card-img-top" src="https://www.insidehighered.com/sites/default/server_files/media/thumbnail_image_2.png" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">MBA</h5>
+          <h5 class="card-title text-center"><b>MBA</b></h5>
           <p class="card-text">MBA is an internationally recognized post-graduate program </p>
+          
           <a href="#" class="btn btn-primary">Apply now</a>
 
         </div>
       </div>
-      <a href="logout.php" class="btn btn-danger">Logout</a>
+      <!-- <a href="logout.php" class="btn btn-danger">Logout</a> -->
 
     </div>
   </div>

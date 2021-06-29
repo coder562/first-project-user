@@ -1,5 +1,5 @@
-<?php
-session_start();
+<?php 
+include "session.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,27 +14,36 @@ session_start();
   margin-left: auto;
   margin-right: auto;
 }
-<body>
+
 
 </style>
 </head>
 <body style="background-color: cyan;">
+  <nav class="navbar navbar bg-light">
+  <a class="navbar-brand primary"><b>ITM UNIVERSITY</b></a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success mx-2" type="submit">Search</button>
+    <h3><?php echo $_SESSION['vaishali'] ?></h3>
+    <a href="logout.php" class="btn btn-danger mx-2">Logout</a>
+  </form>
+</nav>
   
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx-Eg8XhZ5wVnqLP_RBBsa-n_yjn0YeEhWRg&usqp=CAU"  style="width:600px;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx-Eg8XhZ5wVnqLP_RBBsa-n_yjn0YeEhWRg&usqp=CAU" class="w-100"  style="width:600px;">
   <br>
-  <h1><?php echo $_SESSION['vaishali'] ?></h1>
+ 
   <div class="container">
     <div class="login-form">
       <form action="btech_insert.php" method="post" enctype="multipart/form-data">
         <h2 class="text-center">B.TECH</h2>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Name" name="name" >
+          <input type="text" class="form-control" placeholder="Name" name="name" value="<?php echo $_SESSION['name']?>">
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" placeholder="Email" name="email" >
+          <input type="email" class="form-control" placeholder="Email" name="email" value="<?php echo $_SESSION['vaishali']?>">
         </div>
         <div class="form-group">
-          <input type="number" class="form-control" placeholder="Phone Number" name="number" >
+          <input type="number" class="form-control" placeholder="Phone Number" name="number">
         </div>
         <div class="form-group">
           <label>Gender</label><br>
@@ -64,7 +73,7 @@ session_start();
         </div>
         <div class="form-group">
           <label>Address</label>
-          <textarea class="form-control"  rows="3" name="address"></textarea>
+          <textarea class="form-control"  rows="3" name="address" ></textarea>
         </div>
         <div class="form-group">
           <input type="file" class="form-control"  name="image" >10th marksheet

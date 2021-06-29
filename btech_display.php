@@ -1,3 +1,6 @@
+<?php 
+include "session.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +15,13 @@
 </style>
 </head>
 <body style="background-color: cyan;">
+	<nav class="navbar navbar bg-light">
+  <a class="navbar-brand primary"><b>ITM UNIVERSITY</b></a>
+  
+    <h3><?php echo $_SESSION['vaishali'] ?></h3>
+    <a href="logout.php" class="btn btn-danger mx-2">Logout</a>
+
+</nav>
 	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx-Eg8XhZ5wVnqLP_RBBsa-n_yjn0YeEhWRg&usqp=CAU"  style="width:600px;">
 	<br>
 	<div class="container">
@@ -28,7 +38,8 @@
 			</tr>
 			<?php
 			include "db_conn.php";
-			$data="select * from btech order by id desc";
+			$b=$_SESSION['vaishali'];
+			$data="select * from btech where email='$b'";
 			$result=mysqli_query($conn,$data);
 
 			while($a=mysqli_fetch_array($result)){

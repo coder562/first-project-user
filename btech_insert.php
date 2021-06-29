@@ -16,6 +16,6 @@ $files="upload/".$h;
 move_uploaded_file($filename, $files);
 $data="insert into btech(name,email,number,gender,stream,qualifications,address,image)values('$a','$b','$c','$d','$e','$x','$g','$files')";
 mysqli_query($conn,$data);
-header('Location:btech_display.php')
+header('Location:btech_display.php');
 
 ?>
